@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
   const {
@@ -11,9 +12,9 @@ const SignUp = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [data, setData] = useState("");
-
-  const { createUser, ContinueWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { createUser, ContinueWithGoogle, updateUser } =
+    useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
 
   const handleSignUp = (data) => {
@@ -23,6 +24,17 @@ const SignUp = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        toast.success("User Created Successfully!");
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((error) => {
         console.log(error);

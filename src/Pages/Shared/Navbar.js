@@ -20,18 +20,21 @@ const Navbar = () => {
       <li>
         <Link to="/"> Explore </Link>
       </li>
-      <li>
-        <Link to="/"> Dashboard </Link>
-      </li>
+
       <li>
         <Link to="/"> Blogs </Link>
       </li>
       {user?.uid ? (
         <>
           <li>
+            <Link to="/dashboard"> Dashboard </Link>
+          </li>
+          <li>
+            <a href="#">{user?.displayName}</a>
+          </li>
+          <li>
             <button onClick={handleLogOut}> Sign Out </button>
           </li>
-          <li>{user?.displayName}</li>
         </>
       ) : (
         <li>
@@ -64,7 +67,7 @@ const Navbar = () => {
   return (
     <nav className="bg-primary sticky top-0 z-50">
       <div className="max-w-7xl mx-auto ">
-        <div className="navbar ">
+        <div className="navbar flex justify-between">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -95,7 +98,7 @@ const Navbar = () => {
               Gari Bazar
             </Link>
           </div>
-          <div className="navbar-center hidden lg:flex navbar-end">
+          <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{menuItems}</ul>
           </div>
         </div>
