@@ -5,6 +5,12 @@ import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/Login/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
+import DashboardLayout from "../../Layout/DashboardLayout";
+import Payment from "../../Pages/Dashboard/Payment";
+import Review from "../../Pages/Dashboard/Review";
+import ManageOrders from "../../Pages/Dashboard/ManageOrders";
+import ViewAllProducts from "../../Pages/Dashboard/ViewAllProducts";
+import AddProduct from "../../Pages/Dashboard/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -29,10 +35,35 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        {" "}
-        <Dashboard></Dashboard>{" "}
+        <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/dashboard/payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "/dashboard/review",
+        element: <Review></Review>,
+      },
+      {
+        path: "/dashboard/manageOrders",
+        element: <ManageOrders></ManageOrders>,
+      },
+      {
+        path: "/dashboard/allProducts",
+        element: <ViewAllProducts></ViewAllProducts>,
+      },
+      {
+        path: "/dashboard/addProduct",
+        element: <AddProduct></AddProduct>,
+      },
+    ],
   },
 ]);
 export default router;
