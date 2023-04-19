@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaTruckMonster } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const menuItems = (
     <>
       <li>
@@ -17,9 +26,18 @@ const Navbar = () => {
       <li>
         <Link to="/"> Blogs </Link>
       </li>
-      <li>
-        <Link to="/login"> Login </Link>
-      </li>
+      {user?.uid ? (
+        <>
+          <li>
+            <button onClick={handleLogOut}> Sign Out </button>
+          </li>
+          <li>{user?.displayName}</li>
+        </>
+      ) : (
+        <li>
+          <Link to="/login"> Login </Link>
+        </li>
+      )}
       <li>
         <label className="swap swap-rotate">
           <input type="checkbox" />

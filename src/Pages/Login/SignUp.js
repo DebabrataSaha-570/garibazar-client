@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const [data, setData] = useState("");
 
+  const { createUser, ContinueWithGoogle } = useContext(AuthContext);
+  const [signUpError, setSignUpError] = useState("");
+
   const handleSignUp = (data) => {
-    console.log(data);
-    // setLoginError('');
-    // signIn(data.email, data.password)
-    //     .then(result => {
-    //         const user = result.user;
-    //         console.log(user);
-    //         navigate(from, {replace: true});
-    //     })
-    //     .catch(error => {
-    //         console.log(error.message)
-    //         setLoginError(error.message);
-    //     });
+    setSignUpError("");
+    console.log(errors);
+    createUser(data.email, data.password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+        setSignUpError(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    ContinueWithGoogle()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+        setSignUpError(error.message);
+      });
   };
 
   return (
@@ -28,6 +47,26 @@ const SignUp = () => {
       <div className="w-96 p-7 card  shadow-xl">
         <h2 className="text-xl text-center">Sign Up</h2>
         <form onSubmit={handleSubmit(handleSignUp)}>
+          {/* name */}
+
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              {...register("name", {
+                required: "Name is required",
+              })}
+              className="input input-bordered w-full max-w-xs"
+            />
+            {errors.name && (
+              <p className="text-red-600">{errors.name?.message}</p>
+            )}
+          </div>
+          {/* email  */}
+
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
@@ -40,7 +79,9 @@ const SignUp = () => {
               })}
               className="input input-bordered w-full max-w-xs"
             />
-            {/* {errors.email && <p className='text-red-600'>{errors.email?.message}</p>} */}
+            {errors.email && (
+              <p className="text-red-600">{errors.email?.message}</p>
+            )}
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -55,22 +96,26 @@ const SignUp = () => {
                   value: 6,
                   message: "Password must be 6 characters or longer",
                 },
+                pattern: {
+                  value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                  message:
+                    "Password must have uppercase, number and special characters",
+                },
               })}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs mb-3"
             />
-            <label className="label">
-              {" "}
-              <span className="label-text">Forget Password?</span>
-            </label>
-            {/* {errors.password && <p className='text-red-600'>{errors.password?.message}</p>} */}
+
+            {errors.password && (
+              <p className="text-red-600">{errors.password?.message}</p>
+            )}
           </div>
           <input
-            className="btn btn-primary w-full"
+            className="btn btn-primary w-full "
             value="Sign Up"
             type="submit"
           />
           <div>
-            {/* {loginError && <p className='text-red-600'>{loginError}</p>} */}
+            {signUpError && <p className="text-red-600">{signUpError}</p>}
           </div>
         </form>
         <p className="text-base my-2 text-center">
@@ -80,7 +125,10 @@ const SignUp = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline hover:btn-primary w-full">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline hover:btn-primary w-full"
+        >
           <FcGoogle className="mr-5 text-2xl"></FcGoogle> CONTINUE WITH GOOGLE
         </button>
       </div>

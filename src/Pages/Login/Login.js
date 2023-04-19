@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../contexts/AuthProvider";
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const [data, setData] = useState("");
+  const { createUser, ContinueWithGoogle, signInUser } =
+    useContext(AuthContext);
+
+  const [loginError, setLoginError] = useState("");
 
   const handleLogin = (data) => {
     // console.log(data);
@@ -20,6 +29,29 @@ const Login = () => {
     //         console.log(error.message)
     //         setLoginError(error.message);
     //     });
+    console.log(data);
+    setLoginError("");
+    signInUser(data.email, data.password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    ContinueWithGoogle()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
   };
 
   return (
@@ -39,7 +71,9 @@ const Login = () => {
               })}
               className="input input-bordered w-full max-w-xs"
             />
-            {/* {errors.email && <p className='text-red-600'>{errors.email?.message}</p>} */}
+            {errors.email && (
+              <p className="text-red-600">{errors.email?.message}</p>
+            )}
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -54,6 +88,11 @@ const Login = () => {
                   value: 6,
                   message: "Password must be 6 characters or longer",
                 },
+                pattern: {
+                  value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                  message:
+                    "Password must have uppercase, number and special characters",
+                },
               })}
               className="input input-bordered w-full max-w-xs"
             />
@@ -61,7 +100,9 @@ const Login = () => {
               {" "}
               <span className="label-text">Forget Password?</span>
             </label>
-            {/* {errors.password && <p className='text-red-600'>{errors.password?.message}</p>} */}
+            {errors.password && (
+              <p className="text-red-600">{errors.password?.message}</p>
+            )}
           </div>
           <input
             className="btn btn-primary w-full"
@@ -69,7 +110,7 @@ const Login = () => {
             type="submit"
           />
           <div>
-            {/* {loginError && <p className='text-red-600'>{loginError}</p>} */}
+            {loginError && <p className="text-red-600">{loginError}</p>}
           </div>
         </form>
         <p className="text-base my-2 text-center">
@@ -79,7 +120,10 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline hover:btn-primary w-full">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline hover:btn-primary w-full"
+        >
           <FcGoogle className="mr-5 text-2xl"></FcGoogle> CONTINUE WITH GOOGLE
         </button>
       </div>
