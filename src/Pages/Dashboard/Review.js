@@ -10,26 +10,26 @@ const Review = () => {
           <input
             type="text"
             placeholder="Your Name"
-            className="input input-bordered input-secondary w-full mb-3"
+            className="input input-bordered  w-full mb-3"
           />
           <br />
           <input
             type="text"
             placeholder="Company Name, Designation"
-            className="input input-bordered input-secondary w-full mb-3"
+            className="input input-bordered  w-full mb-3"
           />
           <br />
           <input
             type="text"
             placeholder="Ratings (1-5)"
-            className="input input-bordered input-secondary  w-full mb-3"
+            className="input input-bordered   w-full mb-3"
           />
           <br />
           <textarea
             placeholder="Description (up to 50 words)"
-            className="textarea textarea-bordered textarea-secondary textarea-lg  w-full mb-3"
+            className="textarea textarea-bordered  textarea-lg  w-full mb-3"
           ></textarea>
-          <input type="submit" className="btn btn-primary" value="Submit" />
+          <input type="submit" className="btn btn-primary " value="Submit" />
         </form>
       </div>
     </section>

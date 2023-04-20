@@ -65,7 +65,7 @@ const DashboardNavbar = () => {
     </>
   );
   return (
-    <nav className="bg-secondary sticky top-0 z-50 text-white">
+    <nav className="bg-secondary  sticky top-0 z-50 text-white">
       <div className=" ">
         <div className="navbar flex justify-between">
           <div className="navbar-start">
