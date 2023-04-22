@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import SingleSedanCar from "./SingleSedanCar";
 import { RotatingLines } from "react-loader-spinner";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 const SedanCars = () => {
   const [sedanCars, setSedanCars] = useState([]);
+  const bodyType = "sedan";
 
   useEffect(() => {
-    fetch("http://localhost:5000/product/hatchback")
+    fetch("http://localhost:5000/product/sedan")
       .then((res) => res.json())
       .then((data) => {
         setSedanCars(data);
@@ -108,11 +110,11 @@ const SedanCars = () => {
           />
         </div>
       )}
-      <div className="flex justify-end">
+      <Link to={`/viewAllCars/${bodyType}`} className="flex justify-end">
         <button className="btn btn-ghost capitalize">
           View all Sedan Cars
         </button>
-      </div>
+      </Link>
     </section>
   );
 };

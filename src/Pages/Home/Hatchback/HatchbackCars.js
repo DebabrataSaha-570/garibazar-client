@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import SedanCars from "../Sedan/SedanCars";
 import SingleHatchbackCar from "./SingleHatchbackCar";
 import { RotatingLines } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 const HatchbackCars = () => {
   const [hatchbackCars, setHatchbackCars] = useState([]);
+  const bodyType = "hatchback";
 
   useEffect(() => {
     fetch("http://localhost:5000/product/hatchback")
@@ -109,9 +110,12 @@ const HatchbackCars = () => {
         </div>
       )}
       <div className="flex justify-end">
-        <button className="btn btn-ghost capitalize">
+        <Link
+          to={`/viewAllCars/${bodyType}`}
+          className="btn btn-ghost capitalize"
+        >
           View all Hatchback Cars
-        </button>
+        </Link>
       </div>
     </section>
   );
