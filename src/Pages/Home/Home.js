@@ -1,9 +1,10 @@
 import React from "react";
+import SUVCars from "./SUV/SUVCars";
 
 const Home = () => {
   return (
-    <div style={{ height: "1000px" }}>
-      <h3>This is home component</h3>
+    <div>
+      <SUVCars></SUVCars>
     </div>
   );
 };
