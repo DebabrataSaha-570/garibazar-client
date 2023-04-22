@@ -19,7 +19,7 @@ code {
 /* react slick gap  */
 
 .slick-slide > div {
-  margin: 5px 10px;
+  margin: 10px 10px;
 }
 .slick-list {
   margin: 0 -10px;

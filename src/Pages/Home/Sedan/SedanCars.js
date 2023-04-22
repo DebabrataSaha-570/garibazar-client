@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import SingleSUVCar from "./SingleSUVCar";
+import SingleSedanCar from "./SingleSedanCar";
 import { RotatingLines } from "react-loader-spinner";
 import Slider from "react-slick";
 
-const SUVCars = () => {
-  const [suvCars, setSUVcars] = useState([]);
+const SedanCars = () => {
+  const [sedanCars, setSedanCars] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/product/hatchback")
       .then((res) => res.json())
       .then((data) => {
-        setSUVcars(data);
+        setSedanCars(data);
       });
   }, []);
 
@@ -86,14 +86,14 @@ const SUVCars = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto my-5 px-8 py-3">
-      <h3 className="text-2xl font-semibold mb-2">SUV Cars </h3>
-      {suvCars.length ? (
+    <section className="max-w-7xl mx-auto mb-5 px-8 py-3">
+      <h3 className="text-2xl font-semibold mb-2">Sedan Cars </h3>
+      {sedanCars.length ? (
         <Slider {...settings}>
-          {suvCars.slice(0, 6).map((car) => (
+          {sedanCars.slice(0, 6).map((car) => (
             <div>
               {" "}
-              <SingleSUVCar car={car}></SingleSUVCar>{" "}
+              <SingleSedanCar car={car}></SingleSedanCar>{" "}
             </div>
           ))}
         </Slider>
@@ -109,10 +109,12 @@ const SUVCars = () => {
         </div>
       )}
       <div className="flex justify-end">
-        <button className="btn btn-ghost capitalize">View all SUV Cars</button>
+        <button className="btn btn-ghost capitalize">
+          View all Sedan Cars
+        </button>
       </div>
     </section>
   );
 };
 
-export default SUVCars;
+export default SedanCars;
