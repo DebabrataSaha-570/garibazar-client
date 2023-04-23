@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SingleExploreCar from "./SingleExploreCar";
 import { RotatingLines } from "react-loader-spinner";
+import Spinner from "../../Components/Spinner";
 
 const Explore = () => {
   const [allCars, setAllCars] = useState([]);
@@ -25,15 +26,7 @@ const Explore = () => {
           ))}
         </div>
       ) : (
-        <div className="flex justify-center items-center">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="1.75"
-            width="76"
-            visible={true}
-          />
-        </div>
+        <Spinner></Spinner>
       )}
     </section>
   );

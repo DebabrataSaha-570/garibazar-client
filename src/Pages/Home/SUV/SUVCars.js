@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SingleSUVCar from "./SingleSUVCar";
-import { RotatingLines } from "react-loader-spinner";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import Spinner from "../../../Components/Spinner";
 
 const SUVCars = () => {
   const [suvCars, setSUVcars] = useState([]);
@@ -100,15 +100,7 @@ const SUVCars = () => {
           ))}
         </Slider>
       ) : (
-        <div className="flex justify-center items-center">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="1.75"
-            width="76"
-            visible={true}
-          />
-        </div>
+        <Spinner></Spinner>
       )}
       <Link to={`/viewAllCars/${bodyType}`} className="flex justify-end">
         <button className="btn btn-ghost capitalize">View all SUV Cars</button>

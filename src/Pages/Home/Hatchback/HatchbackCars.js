@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import SingleHatchbackCar from "./SingleHatchbackCar";
 import { RotatingLines } from "react-loader-spinner";
 import { Link } from "react-router-dom";
+import Spinner from "../../../Components/Spinner";
 
 const HatchbackCars = () => {
   const [hatchbackCars, setHatchbackCars] = useState([]);
@@ -99,15 +100,7 @@ const HatchbackCars = () => {
           ))}
         </Slider>
       ) : (
-        <div className="flex justify-center items-center">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="1.75"
-            width="76"
-            visible={true}
-          />
-        </div>
+        <Spinner></Spinner>
       )}
       <div className="flex justify-end">
         <Link

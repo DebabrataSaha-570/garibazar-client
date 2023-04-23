@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ViewSingleCar from "./ViewSingleCar";
-import { RotatingLines } from "react-loader-spinner";
+import Spinner from "../../../Components/Spinner";
 
 const ViewAllCars = () => {
   const { bodyType } = useParams();
@@ -25,15 +25,7 @@ const ViewAllCars = () => {
           ))}
         </div>
       ) : (
-        <div className="flex justify-center items-center">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="1.75"
-            width="76"
-            visible={true}
-          />
-        </div>
+        <Spinner></Spinner>
       )}
     </section>
   );
