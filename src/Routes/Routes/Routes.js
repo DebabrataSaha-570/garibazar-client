@@ -12,6 +12,7 @@ import ManageOrders from "../../Pages/Dashboard/ManageOrders";
 import ViewAllProducts from "../../Pages/Dashboard/ViewAllProducts";
 import AddProduct from "../../Pages/Dashboard/AddProduct";
 import ViewAllCars from "../../Pages/Home/ViewAllCars/ViewAllCars";
+import Explore from "../../Pages/Explore/Explore";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/explore",
+        element: <Explore></Explore>,
       },
       {
         path: "/viewAllCars/:bodyType",
