@@ -13,6 +13,7 @@ import ViewAllProducts from "../../Pages/Dashboard/ViewAllProducts";
 import AddProduct from "../../Pages/Dashboard/AddProduct";
 import ViewAllCars from "../../Pages/Home/ViewAllCars/ViewAllCars";
 import Explore from "../../Pages/Explore/Explore";
+import ProductDetail from "../../Pages/ProductDetail/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,19 @@ const router = createBrowserRouter([
       {
         path: "/explore",
         element: <Explore></Explore>,
+      },
+      {
+        path: "/viewAllCars/:bodyType",
+        element: <ViewAllCars></ViewAllCars>,
+      },
+      {
+        path: "/productDetail/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ProductDetail></ProductDetail>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "/viewAllCars/:bodyType",

@@ -1,8 +1,9 @@
 import React from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const ViewSingleCar = ({ car }) => {
-  const { name, image, price } = car;
+  const { name, image, price, _id } = car;
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl ">
       <figure>
@@ -14,9 +15,12 @@ const ViewSingleCar = ({ car }) => {
           <TbCurrencyTaka className="inline-block"></TbCurrencyTaka> {price}*
         </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary h-[10px] capitalize ">
+          <Link
+            to={`/productDetail/${_id}`}
+            className="btn btn-primary h-[10px] capitalize "
+          >
             Show Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
