@@ -10,7 +10,7 @@ const SedanCars = () => {
   const bodyType = "sedan";
 
   useEffect(() => {
-    fetch("http://localhost:5000/product/sedan")
+    fetch(`http://localhost:5000/product/${bodyType}`)
       .then((res) => res.json())
       .then((data) => {
         setSedanCars(data);
