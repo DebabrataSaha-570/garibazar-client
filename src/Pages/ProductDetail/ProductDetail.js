@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import axios from "axios";
 import { TbCurrencyTaka } from "react-icons/tb";
+import BookingModal from "./BookingModal";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -63,7 +64,7 @@ const ProductDetail = () => {
                 {/* row 1 */}
                 <tr>
                   <td>ARAI Mileage</td>
-                  <td>{mileage}</td>
+                  <td>{mileage}Kmpl</td>
                 </tr>
                 {/* row 2 */}
                 <tr>
@@ -73,7 +74,7 @@ const ProductDetail = () => {
                 {/* row 3 */}
                 <tr>
                   <td>Max Power (bhp)</td>
-                  <td>{maxPower}</td>
+                  <td>{maxPower} bhp</td>
                 </tr>
                 <tr>
                   <td>Seating Capacity</td>
@@ -85,7 +86,7 @@ const ProductDetail = () => {
                 </tr>
                 <tr>
                   <td>Service Cost (Avg. of 5 years)</td>
-                  <td>{serviceCost}</td>
+                  <td>BDT.{serviceCost}</td>
                 </tr>
                 <tr>
                   <td>Fuel Type</td>
@@ -106,7 +107,14 @@ const ProductDetail = () => {
               </tbody>
             </table>
             <div className="my-2">
-              <button className="btn btn-primary btn-block">Book Now</button>
+              {/* The button to open modal */}
+              <label
+                htmlFor="bookNowModalBtn"
+                className="btn btn-primary btn-block"
+              >
+                Book Now
+              </label>
+              <BookingModal product={product} user={user}></BookingModal>
             </div>
           </div>
         </div>
