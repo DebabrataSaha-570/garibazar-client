@@ -29,6 +29,7 @@ const BookingModal = ({ product, user }) => {
       userPhone: phoneValue,
       creditCard: creditCardValue,
       bookingDate: bookingDate,
+      status: "Pending",
     };
     //Axios post
     axios
