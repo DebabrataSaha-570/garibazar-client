@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SingleMyOrder from "./SingleMyOrder";
 import Spinner from "../../Components/Spinner";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
+  const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allBookings")
+      .get(`http://localhost:5000/booking/${user?.email}`)
       .then((res) => {
         console.log(res.data);
         setBookings(res.data);

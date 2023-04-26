@@ -59,6 +59,7 @@ const BookingModal = ({ product, user }) => {
           <h3 className="text-lg font-bold">{name}</h3>
           <form onSubmit={handleBookNow} className="p-3 space-y-2">
             <input
+              required
               ref={userNameRef}
               type="text"
               placeholder="Your Name"
@@ -66,6 +67,7 @@ const BookingModal = ({ product, user }) => {
               className="input input-bordered w-full "
             />
             <input
+              required
               ref={emailRef}
               type="email"
               placeholder="Your Email"
@@ -73,18 +75,21 @@ const BookingModal = ({ product, user }) => {
               className="input input-bordered w-full "
             />
             <input
+              required
               ref={phoneRef}
               type="number"
               placeholder="Your Phone Number"
               className="input input-bordered w-full "
             />
             <input
+              required
               ref={addressRef}
               type="text"
               placeholder="Your Address"
               className="input input-bordered w-full "
             />
             <input
+              required
               ref={creditCardRef}
               type="text"
               placeholder="Your Credit Card Number"
