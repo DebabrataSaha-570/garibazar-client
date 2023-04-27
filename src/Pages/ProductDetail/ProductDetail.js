@@ -39,7 +39,6 @@ const ProductDetail = () => {
   } = product;
   return (
     <section className="max-w-7xl mx-auto my-5">
-      {/* <h3 className="text-2xl font-semibold my-3 ">All available Cars</h3> */}
       <div className="px-4 grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* left side  */}
         <div>

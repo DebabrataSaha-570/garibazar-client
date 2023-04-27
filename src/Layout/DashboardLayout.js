@@ -24,12 +24,12 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content bg-[#F4F7FC]  ">
+        <div className="drawer-content bg-[--dashboardOutlet]  ">
           <Outlet></Outlet>
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-[#36454f] text-white">
+          <ul className="menu p-4 w-80 bg-[--dashboardNav] text-[--dashboardText]">
             <li>
               <NavLink
                 className={({ isActive }) =>

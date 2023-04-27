@@ -14,13 +14,13 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <section className="bg-secondary py-6">
-      <footer className="footer max-w-7xl mx-auto p-14  text-[#FFFFFD]">
+      <footer className="footer max-w-7xl mx-auto p-14  text-[--footerText]">
         <div>
-          <a className="text-3xl font-semibold text-[#FFFFFD]">
+          <Link to="/" className="text-3xl font-semibold text-[--footerText]">
             {" "}
             <FaTruckMonster className="inline-block text-5xl text-primary"></FaTruckMonster>{" "}
             Gari Bazar
-          </a>
+          </Link>
           <p className="w-[250px] leading-6">
             If you are going to use of Lorem Ipsum need to be sure there isn't
             hidden of text
@@ -64,7 +64,7 @@ const Footer = () => {
             to="/contact"
             className="hover:text-primary cursor-pointer transition-all duration-500 "
           >
-            Sports Car
+            Hatchback
           </Link>
           <Link
             to="/blogs"
@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
       </footer>
       <hr className=" border-t border-[#ffffff1a]" />
-      <footer className="footer max-w-7xl mx-auto px-10 py-5  bg-secondary text-[#FFFFFD] ">
+      <footer className="footer max-w-7xl mx-auto px-10 py-5  bg-secondary text-[--footerText] ">
         <div className="flex-col md:flex md:flex-row justify-between items-center w-full">
           <p className="text-[14px]">
             © 2023 All Rights Reserved by Debabrata Saha

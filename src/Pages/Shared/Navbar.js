@@ -1,10 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaTruckMonster } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme")
+      ? localStorage.getItem("theme")
+      : "garibazartheme"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("halloween");
+    } else {
+      setTheme("garibazartheme");
+    }
+  };
+
   const handleLogOut = () => {
     logOut()
       .then((res) => {})
@@ -43,7 +63,7 @@ const Navbar = () => {
       )}
       <li>
         <label className="swap swap-rotate">
-          <input type="checkbox" />
+          <input onChange={handleToggle} type="checkbox" />
 
           <svg
             className="swap-on fill-current w-8 h-8"
@@ -65,7 +85,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="bg-primary sticky top-0 z-50">
+    <nav className="bg-primary text-[--navbarText] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto ">
         <div className="navbar flex justify-between">
           <div className="navbar-start">
@@ -86,12 +106,7 @@ const Navbar = () => {
                   />
                 </svg>
               </label>
-              {/* <label
-                htmlFor="dashboard-drawer"
-                className="btn btn-primary drawer-button lg:hidden"
-              >
-                Open drawer
-              </label> */}
+
               <ul
                 tabIndex={0}
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary rounded-box w-52"
@@ -107,27 +122,6 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{menuItems}</ul>
           </div>
-
-          {/* <label
-            tabIndex={2}
-            htmlFor="dashboard-drawer"
-            className="btn btn-ghost lg:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label> */}
         </div>
       </div>
     </nav>
