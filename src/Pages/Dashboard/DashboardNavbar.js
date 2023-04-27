@@ -17,18 +17,9 @@ const DashboardNavbar = () => {
       <li>
         <Link to="/"> Home </Link>
       </li>
-      <li>
-        <Link to="/"> Explore </Link>
-      </li>
 
-      <li>
-        <Link to="/"> Blogs </Link>
-      </li>
       {user?.uid ? (
         <>
-          <li>
-            <Link to="/dashboard"> Dashboard </Link>
-          </li>
           <li>
             <a href="#">{user?.displayName}</a>
           </li>
@@ -65,7 +56,7 @@ const DashboardNavbar = () => {
     </>
   );
   return (
-    <nav className="bg-secondary  sticky top-0 z-50 text-white">
+    <nav className="bg-[#36454f] text-white sticky top-0 z-50 ">
       <div className=" ">
         <div className="navbar flex justify-between">
           <div className="navbar-start">

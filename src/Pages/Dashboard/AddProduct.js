@@ -83,10 +83,10 @@ const AddProduct = () => {
 
   return (
     <section>
-      <h3 className="text-3xl m-3">Add Product</h3>
+      <h3 className="text-3xl m-3 text-center">Add Product</h3>
       <form
         onSubmit={handleAddProduct}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-5/6 m-6 px-5 py-7 shadow-lg"
+        className="grid justify-items-center grid-cols-1 md:grid-cols-2 gap-6 w-5/6 m-6 mx-auto bg-white p-8 rounded-md shadow-lg"
       >
         <div className="space-y-3">
           {/* name  */}

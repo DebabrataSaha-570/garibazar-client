@@ -1,8 +1,18 @@
 import React from "react";
-import Navbar from "../Pages/Shared/Navbar";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import DashboardNavbar from "../Pages/Dashboard/DashboardNavbar";
-
+import {
+  FaListUl,
+  FaPlus,
+  FaRegCommentDots,
+  FaComment,
+  FaClipboardList,
+} from "react-icons/fa";
+import {
+  MdManageAccounts,
+  MdOutlinePayment,
+  MdOutlinePayments,
+} from "react-icons/md";
 const DashboardLayout = () => {
   return (
     <div>
@@ -14,30 +24,82 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content  ">
+        <div className="drawer-content bg-[#F4F7FC]  ">
           <Outlet></Outlet>
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-primary text-base-content">
-            {/* <!-- Sidebar content here --> */}
+          <ul className="menu p-4 w-80 bg-[#36454f] text-white">
             <li>
-              <Link to="/dashboard">My Orders</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "bg-primary text-black rounded-lg" : ""
+                }
+                to="/dashboard"
+                end
+              >
+                {" "}
+                <FaListUl className="text-[20px]"></FaListUl> My Orders
+              </NavLink>
             </li>
             <li>
-              <Link to="/dashboard/payment">Payment</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "bg-primary text-black rounded-lg" : ""
+                }
+                to="/dashboard/payment"
+              >
+                {" "}
+                <MdOutlinePayments className="text-[20px]"></MdOutlinePayments>{" "}
+                Payment
+              </NavLink>
             </li>
             <li>
-              <Link to="/dashboard/review">Review</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "bg-primary text-black rounded-lg" : ""
+                }
+                to="/dashboard/review"
+              >
+                {" "}
+                <FaRegCommentDots className="text-[20px]"></FaRegCommentDots>{" "}
+                Review
+              </NavLink>
             </li>
             <li>
-              <Link to="/dashboard/manageOrders">Manage Orders</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "bg-primary text-black rounded-lg" : ""
+                }
+                to="/dashboard/manageOrders"
+              >
+                {" "}
+                <MdManageAccounts className="text-[20px]"></MdManageAccounts>{" "}
+                Manage Orders
+              </NavLink>
             </li>
             <li>
-              <Link to="/dashboard/allProducts">View All Products</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "bg-primary text-black rounded-lg" : ""
+                }
+                to="/dashboard/allProducts"
+              >
+                {" "}
+                <FaClipboardList className="text-[20px]"></FaClipboardList> View
+                All Products
+              </NavLink>
             </li>
             <li>
-              <Link to="/dashboard/addProduct">Add Product</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "bg-primary text-black rounded-lg" : ""
+                }
+                to="/dashboard/addProduct"
+              >
+                {" "}
+                <FaPlus></FaPlus> Add Product
+              </NavLink>
             </li>
           </ul>
         </div>

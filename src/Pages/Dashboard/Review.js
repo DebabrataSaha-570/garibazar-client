@@ -3,9 +3,9 @@ import React from "react";
 const Review = () => {
   return (
     <section>
-      <h3 className="text-3xl font-medium m-3">Review</h3>
+      <h3 className="text-3xl font-medium my-4 text-center">Review</h3>
 
-      <div className="m-4  shadow-lg w-full md:w-1/2 p-7">
+      <div className="mx-8 mb-5 bg-white shadow-lg md:w-1/2 md:mx-auto py-9 px-7 rounded-md">
         <form onSubmit="">
           <input
             type="text"
