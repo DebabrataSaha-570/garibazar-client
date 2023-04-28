@@ -41,4 +41,4 @@ After download you open the project in your IDE and open your terminal. Then for
 
 [Live Link](https://trip-to-paradise-new.web.app/)
 
-You can see server side code in [Trip to paradise Server](https://github.com/DebabrataSaha-570/trip-to-paradise-server)
+You can see server side code in [Gari-bazar Server](https://github.com/DebabrataSaha-570/garibazar-server)
