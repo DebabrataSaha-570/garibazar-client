@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ViewSingleCar = ({ car }) => {
   const { name, image, price, _id } = car;
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl ">
+    <div className="card card-compact max-w-sm  bg-base-100 shadow-xl ">
       <figure>
         <img src={image} alt={name} />
       </figure>

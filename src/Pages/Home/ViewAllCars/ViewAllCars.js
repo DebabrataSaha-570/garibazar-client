@@ -19,7 +19,7 @@ const ViewAllCars = () => {
         All <span className="uppercase">{bodyType}</span> Cars{" "}
       </h3>
       {cars.length ? (
-        <div className="px-3 py-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+        <div className="mx-8 md:px-3  md:mx-0 py-5 grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
           {cars.map((car) => (
             <ViewSingleCar car={car} key={car._id}></ViewSingleCar>
           ))}

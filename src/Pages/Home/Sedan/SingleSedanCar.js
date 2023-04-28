@@ -6,7 +6,7 @@ const SingleSedanCar = ({ car }) => {
   const { name, image, _id, price } = car;
   return (
     <div>
-      <div className="card card-compact  bg-base-100 shadow-xl">
+      <div className="card card-compact   bg-base-100 shadow-xl">
         <figure>
           <img src={image} alt={name} />
         </figure>

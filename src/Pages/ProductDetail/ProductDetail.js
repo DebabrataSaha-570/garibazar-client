@@ -57,7 +57,7 @@ const ProductDetail = () => {
         {/* right side  */}
         <div>
           <h3 className="text-2xl m-2">Specification of {name}</h3>
-          <div className="px-6 pb-5">
+          <div className="md:px-6 pb-5">
             <table className="table w-full">
               <tbody>
                 {/* row 1 */}
