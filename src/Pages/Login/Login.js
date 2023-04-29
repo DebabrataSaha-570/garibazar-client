@@ -10,15 +10,15 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [data, setData] = useState("");
-  const { createUser, ContinueWithGoogle, signInUser } =
-    useContext(AuthContext);
+  const { ContinueWithGoogle, signInUser } = useContext(AuthContext);
 
   const [loginError, setLoginError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
+
+  console.log("from login page", from);
 
   const handleLogin = (data) => {
     console.log(data);
@@ -39,11 +39,28 @@ const Login = () => {
     ContinueWithGoogle()
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        saveUserToDatabase(user.displayName, user.email, "PUT");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
         setLoginError(error.message);
+      });
+  };
+
+  const saveUserToDatabase = (name, email, method) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        navigate("/");
+        console.log(data);
       });
   };
 

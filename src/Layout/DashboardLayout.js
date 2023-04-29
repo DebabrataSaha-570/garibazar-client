@@ -1,19 +1,17 @@
-import React from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 import DashboardNavbar from "../Pages/Dashboard/DashboardNavbar";
 import {
   FaListUl,
   FaPlus,
   FaRegCommentDots,
-  FaComment,
   FaClipboardList,
+  FaUsers,
 } from "react-icons/fa";
-import {
-  MdManageAccounts,
-  MdOutlinePayment,
-  MdOutlinePayments,
-} from "react-icons/md";
+import { MdManageAccounts, MdOutlinePayments } from "react-icons/md";
+import { AuthContext } from "../contexts/AuthProvider";
 const DashboardLayout = () => {
+  const { admin } = useContext(AuthContext);
   return (
     <div>
       {/* <Navbar></Navbar> */}
@@ -66,41 +64,62 @@ const DashboardLayout = () => {
                 Review
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "bg-primary text-black rounded-lg" : ""
-                }
-                to="/dashboard/manageOrders"
-              >
-                {" "}
-                <MdManageAccounts className="text-[20px]"></MdManageAccounts>{" "}
-                Manage Orders
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "bg-primary text-black rounded-lg" : ""
-                }
-                to="/dashboard/allProducts"
-              >
-                {" "}
-                <FaClipboardList className="text-[20px]"></FaClipboardList> View
-                All Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "bg-primary text-black rounded-lg" : ""
-                }
-                to="/dashboard/addProduct"
-              >
-                {" "}
-                <FaPlus></FaPlus> Add Product
-              </NavLink>
-            </li>
+            {admin && (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "bg-primary text-black rounded-lg" : ""
+                  }
+                  to="/dashboard/manageOrders"
+                >
+                  {" "}
+                  <MdManageAccounts className="text-[20px]"></MdManageAccounts>{" "}
+                  Manage Orders
+                </NavLink>
+              </li>
+            )}
+
+            {admin && (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "bg-primary text-black rounded-lg" : ""
+                  }
+                  to="/dashboard/users"
+                >
+                  {" "}
+                  <FaUsers className="text-[20px]"></FaUsers> All Users
+                </NavLink>
+              </li>
+            )}
+
+            {admin && (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "bg-primary text-black rounded-lg" : ""
+                  }
+                  to="/dashboard/allProducts"
+                >
+                  {" "}
+                  <FaClipboardList className="text-[20px]"></FaClipboardList>{" "}
+                  View All Products
+                </NavLink>
+              </li>
+            )}
+            {admin && (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "bg-primary text-black rounded-lg" : ""
+                  }
+                  to="/dashboard/addProduct"
+                >
+                  {" "}
+                  <FaPlus></FaPlus> Add Product
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>

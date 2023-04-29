@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SingleSedanCar from "./SingleSedanCar";
-import { RotatingLines } from "react-loader-spinner";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import Spinner from "../../../Components/Spinner";
@@ -96,7 +95,7 @@ const SedanCars = () => {
           {sedanCars.slice(0, 6).map((car) => (
             <div>
               {" "}
-              <SingleSedanCar car={car}></SingleSedanCar>{" "}
+              <SingleSedanCar car={car} key={car._id}></SingleSedanCar>{" "}
             </div>
           ))}
         </Slider>

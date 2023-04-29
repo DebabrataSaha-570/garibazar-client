@@ -14,6 +14,8 @@ import AddProduct from "../../Pages/Dashboard/AddProduct";
 import ViewAllCars from "../../Pages/Home/ViewAllCars/ViewAllCars";
 import Explore from "../../Pages/Explore/Explore";
 import ProductDetail from "../../Pages/ProductDetail/ProductDetail";
+import AllUsers from "../../Pages/Dashboard/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -65,27 +67,66 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Dashboard></Dashboard>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/payment",
-        element: <Payment></Payment>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Payment></Payment>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/review",
-        element: <Review></Review>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Review></Review>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/users",
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllUsers></AllUsers>{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manageOrders",
-        element: <ManageOrders></ManageOrders>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ManageOrders></ManageOrders>{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allProducts",
-        element: <ViewAllProducts></ViewAllProducts>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ViewAllProducts></ViewAllProducts>{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/addProduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <AddProduct></AddProduct>{" "}
+          </AdminRoute>
+        ),
       },
     ],
   },

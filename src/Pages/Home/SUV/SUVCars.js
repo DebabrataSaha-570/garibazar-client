@@ -95,7 +95,7 @@ const SUVCars = () => {
           {suvCars.slice(0, 6).map((car) => (
             <div>
               {" "}
-              <SingleSUVCar car={car}></SingleSUVCar>{" "}
+              <SingleSUVCar car={car} key={car._id}></SingleSUVCar>{" "}
             </div>
           ))}
         </Slider>

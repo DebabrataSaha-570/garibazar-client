@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-hot-toast";
@@ -12,10 +12,15 @@ const SignUp = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const navigate = useNavigate();
   const { createUser, ContinueWithGoogle, updateUser } =
     useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+
+  console.log("from signup page", from);
 
   const handleSignUp = (data) => {
     setSignUpError("");
@@ -30,10 +35,11 @@ const SignUp = () => {
         };
         updateUser(userInfo)
           .then(() => {
-            navigate("/");
+            saveUserToDatabase(data.name, data.email, "POST");
           })
           .catch((err) => {
             console.log(err);
+            toast.error("Something went wrong. Try again later.");
           });
       })
       .catch((error) => {
@@ -47,10 +53,29 @@ const SignUp = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        saveUserToDatabase(user.displayName, user.email, "PUT");
+        toast.success("User signed In Successfully!");
       })
       .catch((error) => {
         console.log(error);
         setSignUpError(error.message);
+        toast.error("Something went wrong. Try again later.");
+      });
+  };
+
+  const saveUserToDatabase = (name, email, method) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        navigate("/");
+        console.log(data);
       });
   };
 

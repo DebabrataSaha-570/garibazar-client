@@ -22,8 +22,7 @@ const Footer = () => {
             Gari Bazar
           </Link>
           <p className="w-[250px] leading-6">
-            If you are going to use of Lorem Ipsum need to be sure there isn't
-            hidden of text
+            We always try to stay with our best service.
           </p>
 
           <p className="flex items-center justify-center">
