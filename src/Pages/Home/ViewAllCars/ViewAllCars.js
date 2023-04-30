@@ -7,7 +7,7 @@ const ViewAllCars = () => {
   const { bodyType } = useParams();
   const [cars, setCars] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${bodyType}`)
+    fetch(`https://gari-bazar-server.onrender.com/product/${bodyType}`)
       .then((res) => res.json())
       .then((data) => {
         setCars(data);

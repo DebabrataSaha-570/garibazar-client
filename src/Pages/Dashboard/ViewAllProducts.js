@@ -14,7 +14,9 @@ const ViewAllProducts = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allProducts?page=${page}&size=${size}`)
+      .get(
+        `https://gari-bazar-server.onrender.com/allProducts?page=${page}&size=${size}`
+      )
       .then((res) => {
         const { count, result } = res.data;
         setAllCars(result);
@@ -31,7 +33,7 @@ const ViewAllProducts = () => {
     );
     if (confirmMessage) {
       axios
-        .delete(`http://localhost:5000/deleteProduct/${id}`)
+        .delete(`https://gari-bazar-server.onrender.com/deleteProduct/${id}`)
         .then((res) => {
           console.log(res.data);
           if (res.data.deletedCount) {

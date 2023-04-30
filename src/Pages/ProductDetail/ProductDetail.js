@@ -12,7 +12,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/productDetail/${id}`)
+      .get(`https://gari-bazar-server.onrender.com/productDetail/${id}`)
       .then((res) => {
         setProduct(res.data);
       })

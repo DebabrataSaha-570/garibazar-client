@@ -25,7 +25,7 @@ const Review = () => {
       photo: user.photoURL,
       description: data.description,
     };
-    fetch(`http://localhost:5000/users/review/${user.email}`, {
+    fetch(`https://gari-bazar-server.onrender.com/users/review/${user.email}`, {
       method: "PUT",
       body: JSON.stringify(review),
       headers: {

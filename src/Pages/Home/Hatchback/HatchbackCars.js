@@ -9,7 +9,7 @@ const HatchbackCars = () => {
   const bodyType = "hatchback";
 
   useEffect(() => {
-    fetch("http://localhost:5000/product/hatchback")
+    fetch("https://gari-bazar-server.onrender.com/product/hatchback")
       .then((res) => res.json())
       .then((data) => {
         setHatchbackCars(data);

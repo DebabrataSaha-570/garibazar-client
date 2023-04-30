@@ -50,7 +50,7 @@ const Login = () => {
 
   const saveUserToDatabase = (name, email, method) => {
     const user = { name, email };
-    fetch("http://localhost:5000/users", {
+    fetch("https://gari-bazar-server.onrender.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

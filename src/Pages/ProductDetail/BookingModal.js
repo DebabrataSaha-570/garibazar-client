@@ -33,7 +33,7 @@ const BookingModal = ({ product, user }) => {
     };
     //Axios post
     axios
-      .post("http://localhost:5000/addBookNow", bookingData)
+      .post("https://gari-bazar-server.onrender.com/addBookNow", bookingData)
       .then((res) => {
         if (res.data?.insertedId) {
           toast.success("Booking added successfully!");

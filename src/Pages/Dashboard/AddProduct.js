@@ -52,7 +52,7 @@ const AddProduct = () => {
       description: descriptionValue,
     };
 
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://gari-bazar-server.onrender.com/addProduct", {
       method: "POST",
       body: JSON.stringify(productData),
       headers: {

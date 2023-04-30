@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 const AllUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://gari-bazar-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -14,14 +14,14 @@ const AllUsers = () => {
   }, []);
 
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://gari-bazar-server.onrender.com/users/admin/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success("Admin created successfully");
-          fetch("http://localhost:5000/users")
+          fetch("https://gari-bazar-server.onrender.com/users")
             .then((res) => res.json())
             .then((data) => {
               // console.log(data);
@@ -33,7 +33,7 @@ const AllUsers = () => {
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure, you want to delete this?");
     if (confirm) {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://gari-bazar-server.onrender.com/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -48,7 +48,7 @@ const AllUsers = () => {
     }
     // if (confirm) {
     //   axios
-    //     .delete(`http://localhost:5000/deleteBooking/${id}`)
+    //     .delete(`https://gari-bazar-server.onrender.com/deleteBooking/${id}`)
     //     .then((res) => {
     //       console.log(res.data);
     //       if (res.data.deletedCount) {

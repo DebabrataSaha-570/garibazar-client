@@ -8,7 +8,7 @@ const ManageOrders = () => {
   const [allBookings, setAllBookings] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allBookings")
+      .get("https://gari-bazar-server.onrender.com/allBookings")
       .then((res) => {
         console.log(res.data);
         setAllBookings(res.data);
@@ -22,7 +22,7 @@ const ManageOrders = () => {
     const confirm = window.confirm("Are you sure, you want to delete this?");
     if (confirm) {
       axios
-        .delete(`http://localhost:5000/deleteBooking/${id}`)
+        .delete(`https://gari-bazar-server.onrender.com/deleteBooking/${id}`)
         .then((res) => {
           console.log(res.data);
           if (res.data.deletedCount) {
@@ -44,7 +44,7 @@ const ManageOrders = () => {
   const handleApprove = (id) => {
     const confirm = window.confirm("Are you sure, you want to approve this?");
     if (confirm) {
-      fetch(`http://localhost:5000/booking/${id}`, {
+      fetch(`https://gari-bazar-server.onrender.com/booking/${id}`, {
         method: "PUT",
         body: JSON.stringify({ status: "Approved" }),
         headers: {
@@ -56,7 +56,7 @@ const ManageOrders = () => {
           if (data.modifiedCount) {
             toast.success("Booking Approved Successfully");
 
-            fetch("http://localhost:5000/allBookings")
+            fetch("https://gari-bazar-server.onrender.com/allBookings")
               .then((res) => res.json())
               .then((data) => {
                 setAllBookings(data);

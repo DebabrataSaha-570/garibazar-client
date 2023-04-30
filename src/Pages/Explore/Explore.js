@@ -13,7 +13,9 @@ const Explore = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allProducts?page=${page}&size=${size}`)
+      .get(
+        `https://gari-bazar-server.onrender.com/allProducts?page=${page}&size=${size}`
+      )
       .then((res) => {
         const { count, result } = res.data;
         setAllCars(result);

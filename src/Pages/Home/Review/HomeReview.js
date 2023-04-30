@@ -5,7 +5,7 @@ import Slider from "react-slick";
 const HomeReview = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://gari-bazar-server.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

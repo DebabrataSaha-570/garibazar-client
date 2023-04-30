@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://gari-bazar-server.onrender.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);

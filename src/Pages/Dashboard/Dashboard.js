@@ -10,7 +10,7 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/booking/${user?.email}`)
+      .get(`https://gari-bazar-server.onrender.com/booking/${user?.email}`)
       .then((res) => {
         console.log(res.data);
         setBookings(res.data);
@@ -25,7 +25,7 @@ const Dashboard = () => {
     );
     if (confirmMessage) {
       axios
-        .delete(`http://localhost:5000/deleteBooking/${id}`)
+        .delete(`https://gari-bazar-server.onrender.com/deleteBooking/${id}`)
         .then((res) => {
           console.log(res.data);
           if (res.data.deletedCount) {
