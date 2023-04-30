@@ -14,7 +14,7 @@ const TopBanner = () => {
             Discover the perfect ride for you.
           </h1>
 
-          <Link to="/dashboard" className="btn btn-lg btn-outline btn-primary ">
+          <Link to="/dashboard" className="btn btn-lg  btn-primary ">
             Book Now
           </Link>
         </div>

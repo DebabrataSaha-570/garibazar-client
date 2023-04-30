@@ -4,6 +4,7 @@ import SedanCars from "./Sedan/SedanCars";
 import HatchbackCars from "./Hatchback/HatchbackCars";
 import Header from "./Header/Header";
 import AboutUs from "./AboutUs/AboutUs";
+import HomeReview from "./Review/HomeReview";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <SUVCars></SUVCars>
       <SedanCars></SedanCars>
       <HatchbackCars></HatchbackCars>
+      <HomeReview></HomeReview>
     </div>
   );
 };

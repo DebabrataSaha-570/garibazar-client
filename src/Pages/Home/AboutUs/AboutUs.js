@@ -1,15 +1,15 @@
 import React from "react";
-import image1 from "../../../assets/img-3.jpg";
+import image1 from "../../../assets/img-5.jpg";
 const AboutUs = () => {
   return (
-    <div className="hero my-5 md:my-0 min-h-[650px] bg-base-200 ">
+    <div className="hero py-5 md:my-0 min-h-[650px] bg-base-200 ">
       <div className="hero-content flex-col justify-between items-center lg:flex-row-reverse ">
         <img
           src={image1}
-          className="max-w-md md:max-w-lg rounded-lg shadow-2xl basis-1/2"
+          className=" md:max-w-lg object-cover rounded-lg shadow-2xl md:basis-1/2"
           alt="About_image"
         />
-        <div className="basis-1/2">
+        <div className="md:basis-1/2">
           <h1 className="text-4xl md:text-5xl font-bold">About Our Company</h1>
           <p className="py-5 ">
             <span className="text-[1.25rem]">
