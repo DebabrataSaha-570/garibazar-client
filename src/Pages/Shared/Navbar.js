@@ -41,9 +41,6 @@ const Navbar = () => {
         <Link to="/explore"> Explore </Link>
       </li>
 
-      <li>
-        <Link to="/"> Blogs </Link>
-      </li>
       {user?.uid ? (
         <>
           <li>

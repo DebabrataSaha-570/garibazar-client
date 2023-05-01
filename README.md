@@ -1,6 +1,6 @@
 # Gari-Bazar
 
-![Project Image]()
+![Project Image](https://i.ibb.co/k97N91J/gari-Bazar.png)
 
 ## Description
 
