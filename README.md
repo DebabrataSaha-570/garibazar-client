@@ -1,7 +1,5 @@
 # Gari-Bazar
 
-![Project Image](https://i.ibb.co/k97N91J/gari-Bazar.png)
-
 ## Description
 
 You can get Car Buying Service from my website !!
